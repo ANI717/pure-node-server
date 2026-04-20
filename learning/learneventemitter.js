@@ -6,6 +6,10 @@ emitter.on('Success', (message) => {
     console.log('Success:', message)
 })
 
+emitter.on('Success', (message) => {
+    console.log('AnotherSuccess:', message)
+})
+
 emitter.on('Error', (message) => {
     console.log('Error:', message)
 })
