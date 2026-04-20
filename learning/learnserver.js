@@ -1,14 +1,19 @@
 import http from 'http';
 import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 
 let faviconCache = null;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const faviconPath = path.resolve(__dirname, '../favicon.ico');
 
 
 async function handleFavicon(req, res) {
     try {
         if (!faviconCache) {
-            faviconCache = await fs.readFile('./favicon.ico');
+            faviconCache = await fs.readFile(faviconPath);
         }
 
         res.writeHead(200, { 'Content-Type': 'image/x-icon' });
