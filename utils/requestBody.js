@@ -14,12 +14,12 @@ async function getRequestBody(req) {
                 const parsed = JSON.parse(body);
                 resolve(parsed);
             } catch (err) {
-                reject(new AppError('Invalid JSON', 400));
+                reject(new AppError(400, 'Invalid JSON'));
             }
         });
         
         req.on('error', (err) => {
-            reject(new AppError('Error reading request body', 500));
+            reject(new AppError(500, 'Error reading request body'));
         });
     });
 }

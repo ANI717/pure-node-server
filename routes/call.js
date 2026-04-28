@@ -1,6 +1,6 @@
-const https = require('node:https');
-const sendResponse = require('../utils/sendResponse');
-const { AppError } = require('../utils/errors');
+import https from 'node:https';
+import sendResponse from '../utils/sendResponse.js';
+import { AppError } from '../utils/errors.js';
 
 function handleCall(req, res) {
   return new Promise((resolve, reject) => {
@@ -29,4 +29,4 @@ function handleCall(req, res) {
   });
 }
 
-module.exports = handleCall;
+export default handleCall;

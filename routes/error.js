@@ -1,7 +1,7 @@
-const { AppError } = require('../utils/errors');
+import { AppError } from '../utils/errors.js';
 
 function handleError(req, res) {
   throw new AppError(400, 'Intentional bad request error');
 }
 
-module.exports = handleError;
+export default handleError;

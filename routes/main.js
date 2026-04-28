@@ -1,5 +1,5 @@
-const getRequestBody = require('../utils/requestBody');
-const { AppError } = require('../utils/errors');
+import getRequestBody from '../utils/requestBody.js';
+import { AppError } from '../utils/errors.js';
 
 async function handleMain(req, res) {
   const body = await getRequestBody(req);
@@ -8,12 +8,14 @@ async function handleMain(req, res) {
     throw new AppError(400, 'Request body is empty');
   }
 
+  const responseBody = JSON.stringify(body);
+
   res.writeHead(200, {
-    'Content-Type': 'text/plain',
-    'Content-Length': Buffer.byteLength(body),
+    'Content-Type': 'application/json',
+    'Content-Length': Buffer.byteLength(responseBody),
   });
 
-  res.end(body);
+  res.end(responseBody);
 }
 
-module.exports = handleMain;
+export default handleMain;
